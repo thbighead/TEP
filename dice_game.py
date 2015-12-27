@@ -1,6 +1,21 @@
 from __future__ import division
 from random import uniform
 
+def a_not_equals_b_and_equals_c(times_to_roll, faces_probability):
+	score = 0
+	for x in xrange(0, times_to_roll):
+		result_a = dice_roll(faces_probability)
+		result_b = dice_roll(faces_probability)
+		if result_a == result_b:
+			continue
+		result_c = dice_roll(faces_probability)
+		if result_a == result_c:
+			score += 1
+
+	print "score:", score
+	print "times_to_roll:", times_to_roll
+	print "The probability to score with the given dice is", (score * 100)/times_to_roll, "%"
+
 def dice_game_tester(times_to_roll, faces_probability):
 	score = {"three_dices_in_a_row": 0, "two_pairs_of_dices_in_a_row": 0}
 	for x in xrange(0, times_to_roll):
@@ -71,4 +86,5 @@ def dice_roll(faces_probability):
 # times_to_roll = input("quantas vezes rodar:")
 # print they_see_me_rollin_they_hatin(times_to_roll, faces_probability_input)
 
-dice_game_tester(100000, [1, 1, 1, 1, 1, 1])
+# dice_game_tester(100000, [1, 1, 1, 1, 1, 1])
+a_not_equals_b_and_equals_c(100000, [1, 1, 1, 1, 1, 1])
